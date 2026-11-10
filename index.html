@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VentureHub — share business ideas, get feedback, and find collaborators.">
+  <title>VentureHub — Build what's next</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-mark">V</span><span>venture<span class="brand-light">hub</span></span></a>
+  <nav class="desktop-nav"><a class="active" href="#discover">Discover</a><a href="#how">How it works</a></nav>
+  <div class="top-actions"><button class="btn btn-quiet" id="loginBtn">Log in</button><button class="btn btn-dark" id="joinBtn">Join the community <span>↗</span></button><button class="avatar hidden" id="userAvatar" aria-label="Account menu">U</button></div>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-copy"><div class="eyebrow"><span class="pulse"></span> THE COMMUNITY FOR WHAT'S NEXT</div>
+    <h1>Good ideas grow<br> <span>better together.</span></h1>
+    <p>Share the business you're imagining. Get honest feedback, find your people, and turn a promising idea into something real.</p>
+    <div class="hero-actions"><button class="btn btn-lime" id="heroPublish">Share your idea <span>↗</span></button><a class="text-link" href="#discover">Explore ideas <span>↓</span></a></div>
+    <div class="hero-proof"><div class="mini-avatars"><i>A</i><i>M</i><i>J</i><i>+</i></div><span>A place for curious minds and future founders</span></div>
+  </div>
+  <div class="hero-art">
+    <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+    <div class="floating-note note-top"><span class="note-icon">✳</span><div><b>Big thinking starts here</b><small>Ideas welcome. Ego not required.</small></div></div>
+    <div class="idea-card-hero"><div class="card-kicker">A COMMUNITY IDEA</div><div class="hero-symbol">↗</div><h3>What if local food<br>had a global stage?</h3><div class="hero-tags"><span>Food & drink</span><span>Early stage</span></div><div class="hero-card-foot"><div class="tiny-avatars"><i></i><i></i><i></i></div><span>People are talking</span><span class="heart">♡</span></div></div>
+    <div class="floating-note note-bottom"><span class="spark">✦</span><div><b>Make it happen</b><small>One conversation at a time.</small></div></div>
+    <div class="art-dot dot-a"></div><div class="art-dot dot-b"></div>
+  </div>
+</section>
+<section class="stats"><div><strong id="ideaCount">0</strong><span>Ideas shared</span></div><div><strong>Open</strong><span>Feedback for everyone</span></div><div><strong>1 goal</strong><span>Build something meaningful</span></div></section>
+<section class="discover section-wrap" id="discover">
+  <div class="section-heading"><div><div class="eyebrow">THE IDEA EXCHANGE</div><h2>Find your next <span>inspiration.</span></h2><p>Explore early-stage thinking, ask questions, and help good ideas get better.</p></div><button class="btn btn-dark" id="publishBtn">＋ Publish an idea</button></div>
+  <div class="feed-tools"><div class="searchbox"><span>⌕</span><input id="searchInput" placeholder="Search ideas, industries, keywords..." aria-label="Search ideas"></div><select id="categoryFilter" aria-label="Filter by category"><option value="">All categories</option><option>Technology</option><option>Food & Drink</option><option>Education</option><option>Health & Wellness</option><option>Sustainability</option><option>Finance</option><option>Other</option></select><select id="sortFilter" aria-label="Sort ideas"><option value="newest">Newest first</option><option value="discussed">Most discussed</option></select></div>
+  <div class="feed-layout"><div class="idea-feed" id="ideaFeed"></div><aside class="sidebar"><div class="side-card welcome-card"><div class="side-icon">✳</div><h3>Every big thing<br>starts somewhere.</h3><p>Don't wait for the perfect plan. Share what you have and let the community help shape it.</p><button class="btn btn-lime btn-full" id="sidePublish">Share an idea <span>↗</span></button></div><div class="side-card guidelines"><h4>Community principles</h4><p><span>01</span> Be constructive, not critical.</p><p><span>02</span> Share openly and respectfully.</p><p><span>03</span> Protect sensitive information.</p><a href="#how">Read how it works →</a></div><div class="side-note">A good question can be as valuable as a great answer.</div></aside></div>
+</section>
+<section class="how section-wrap" id="how"><div class="eyebrow">SIMPLE BY DESIGN</div><h2>From thought to <span>momentum.</span></h2><div class="steps"><article><b>01</b><div class="step-icon">✎</div><h3>Put it out there</h3><p>Describe your idea, your plan, and the numbers behind it. You don't need all the answers.</p></article><article><b>02</b><div class="step-icon">◎</div><h3>Invite perspective</h3><p>Get questions, practical feedback, and fresh points of view from the community.</p></article><article><b>03</b><div class="step-icon">↗</div><h3>Build together</h3><p>Connect with people who share your curiosity and can help move the idea forward.</p></article></div></section>
+</main>
+<footer><a class="brand" href="#"><span class="brand-mark">V</span><span>venture<span class="brand-light">hub</span></span></a><span>Ideas are just the beginning. © <span id="year"></span> VentureHub</span><span>Built for people who build.</span></footer>
+<div class="modal hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle"><div class="modal-backdrop" data-close></div><div class="modal-panel auth-panel"><button class="modal-close" data-close>×</button><div class="eyebrow">YOUR NEXT CHAPTER</div><h2 id="authTitle">Join the community.</h2><p class="modal-intro">Create an account to share ideas and join the conversation.</p><form id="authForm"><label>Full name<input id="authName" placeholder="Your name" autocomplete="name"></label><label>Email address<input id="authEmail" type="email" placeholder="you@example.com" required autocomplete="email"></label><label>Password<input id="authPassword" type="password" placeholder="At least 6 characters" minlength="6" required autocomplete="current-password"></label><button class="btn btn-dark btn-full" type="submit" id="authSubmit">Create account</button></form><p class="switch-auth" id="authSwitch">Already a member? <button type="button">Log in</button></p><p class="fine-print">Demo mode stores data in this browser only. Connect Supabase for real accounts and shared data.</p></div></div>
+<div class="modal hidden" id="ideaModal" role="dialog" aria-modal="true" aria-labelledby="ideaTitle"><div class="modal-backdrop" data-close></div><div class="modal-panel large-panel"><button class="modal-close" data-close>×</button><div class="eyebrow">MAKE THE FIRST MOVE</div><h2 id="ideaTitle">Share your business idea.</h2><p class="modal-intro">Give the community enough detail to understand your vision and help you improve it.</p><form id="ideaForm" class="idea-form"><label>Idea title<input id="ideaName" maxlength="100" required placeholder="e.g. A smarter way to..."></label><div class="form-grid"><label>Category<select id="ideaCategory" required><option value="">Choose a category</option><option>Technology</option><option>Food & Drink</option><option>Education</option><option>Health & Wellness</option><option>Sustainability</option><option>Finance</option><option>Other</option></select></label><label>Stage<select id="ideaStage"><option>Exploring</option><option>Planning</option><option>Building</option><option>Launched</option></select></label></div><label>Business plan<textarea id="ideaPlan" rows="5" required placeholder="What problem are you solving? Who is it for? How will your solution work? What makes it different?"></textarea></label><div class="form-grid"><label>Estimated startup costs<input id="ideaCosts" placeholder="e.g. £12,000" required></label><label>Projected monthly revenue<input id="ideaRevenue" placeholder="e.g. £4,500" required></label></div><label>What kind of help are you looking for?<input id="ideaHelp" placeholder="e.g. Co-founder, marketing advice, technical feedback"></label><div class="form-actions"><span class="fine-print">Avoid posting confidential or commercially sensitive details.</span><button class="btn btn-lime" type="submit">Publish idea ↗</button></div></form></div></div>
+<div class="modal hidden" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><div class="modal-backdrop" data-close></div><div class="modal-panel detail-panel"><button class="modal-close" data-close>×</button><div id="detailContent"></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script src="config.js"></script><script src="app.js"></script>
+</body></html>
